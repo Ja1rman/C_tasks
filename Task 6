@@ -14,32 +14,33 @@ void put_snake(int** Snake, int n, int m)
     int min_x = 0;
     int min_y = 0;
     int nm = n * m;
+    int num = nm;
     
     while (k < nm) 
     {   
         for (; y >= min_y && k <= nm; y--, k++)
-            Snake[x][y] = k;
+            Snake[x][y] = num--;
         
         y++;
         x++;
         min_y++;
         
         for (; x < max_x && k <= nm; x++, k++)
-            Snake[x][y] = k;
+            Snake[x][y] = num--;
         
         x--;
         y++;
         min_x++;
         
         for (; y < max_y && k <= nm; y++, k++)
-            Snake[x][y] = k;
+            Snake[x][y] = num--;
         
         y--;
         x--;
         max_y--;
         
         for (; x >= min_x && k <= nm; x--, k++)
-            Snake[x][y] = k;
+            Snake[x][y] = num--;
         
         x++;
         y--;
