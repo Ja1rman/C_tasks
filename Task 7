@@ -1,1 +1,33 @@
+#include <iostream>
 
+using namespace std;
+
+int strange_multiply(int n, int m)
+{
+    int answer = 0; int k;
+    if (n > m)
+    {
+        k = n;
+        for (int i = 0; i < m; i++)
+            answer += k;
+    }
+    else
+    {
+        k = m;
+        for (int i = 0; i < n; i++)
+            answer += k;
+    }
+    
+    return answer;
+}
+
+int main()
+{
+    int n, m;
+    
+    cin >> n >> m;
+    
+    cout << strange_multiply(n, m);
+
+    return 0;
+}
