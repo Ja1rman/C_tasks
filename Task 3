@@ -4,8 +4,6 @@ using namespace std;
 
 void build_ziggurat(int** Ziggurat, int n)
 {
-    int Ziggurat2[n][n];
-    
     if (n % 2 == 0)
         for (int i = 0; i < n / 2; i++)
         {
@@ -14,10 +12,10 @@ void build_ziggurat(int** Ziggurat, int n)
             
             for (int j = i; j < n - i; j++)
             {
-                Ziggurat2[i][j] = ii;
-                Ziggurat2[k][j] = ii;
-                Ziggurat2[j][i] = ii;
-                Ziggurat2[j][k] = ii;
+                Ziggurat[i][j] = ii;
+                Ziggurat[k][j] = ii;
+                Ziggurat[j][i] = ii;
+                Ziggurat[j][k] = ii;
             }
         }
     else
@@ -28,20 +26,22 @@ void build_ziggurat(int** Ziggurat, int n)
             
             for (int j = i; j < n - i; j++)
             {
-                Ziggurat2[i][j] = ii;
-                Ziggurat2[k][j] = ii;
-                Ziggurat2[j][i] = ii;
-                Ziggurat2[j][k] = ii;
+                Ziggurat[i][j] = ii;
+                Ziggurat[k][j] = ii;
+                Ziggurat[j][i] = ii;
+                Ziggurat[j][k] = ii;
             }
         }
         
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
-            cout << Ziggurat2[i][j] << " ";
+            cout << Ziggurat[i][j] << " ";
         
         cout << endl;
     }
+    
+    
 }
 
 int main()
@@ -50,9 +50,16 @@ int main()
  
     cin >> n;
     
-    int Ziggurat[n][n];
+    int **Ziggurat = new int* [n];
+    
+    for (int i = 0; i < n; i++)
+        Ziggurat[i] = new int [n];
     
     build_ziggurat((int**)Ziggurat, n);
-
+    
+    for (int i = 0; i < n; i++)
+        delete [] Ziggurat[i];
+    
+    delete [] Ziggurat;
     return 0;
 }
