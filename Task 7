@@ -2,23 +2,20 @@
 
 using namespace std;
 
-int strange_multiply(int n, int m)
+int strange_multiply(int m, int n)
 {
-    int answer = 0; int k;
-    if (n > m)
-    {
-        k = n;
-        for (int i = 0; i < m; i++)
-            answer += k;
-    }
-    else
-    {
-        k = m;
-        for (int i = 0; i < n; i++)
-            answer += k;
-    }
+    int res = 0;
     
-    return answer;
+	while (n) 
+	{
+		if (n & 1)
+			res += m;
+			
+		m += m;
+		n >>= 1;
+	}
+	
+	return res;
 }
 
 int main()
@@ -27,7 +24,7 @@ int main()
     
     cin >> n >> m;
     
-    cout << strange_multiply(n, m);
+    cout << strange_multiply(m, n);
 
     return 0;
 }
