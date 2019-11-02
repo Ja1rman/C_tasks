@@ -1,1 +1,33 @@
+#include <iostream>
 
+using namespace std;
+
+int strange_sum(int n, int* arr)
+{
+    int result = 0;
+    
+    if (!n) 
+        return result;
+    
+    result = arr[n - 1] + strange_sum(n - 1, arr);
+    
+    return result;
+}
+
+int main()
+{
+    int n;
+    
+    cin >> n;
+    
+    int *arr = new int [n];
+    
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    
+    cout << strange_sum(n, (int*)arr);
+    
+    delete [] arr;
+
+    return 0;
+}
