@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int delete_duplicates(int Array[], int n)
+int delete_duplicates(int* Array, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -23,12 +23,14 @@ int main()
     
     cin >> n;
     
-    int Array[n];
+    int* Array = new int[n];
     
     for (int i = 0; i < n; i++)
         cin >> Array[i];
    
     delete_duplicates(Array, n);
+    
+    delete [] Array;
     
     return 0;
 }
