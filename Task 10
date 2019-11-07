@@ -6,41 +6,44 @@ using namespace std;
 int* func(int* cubs, int n)
 {
     int* temp = new int[8];
+    
+    for (int i = 0; i < 8; i++)
+        temp[i] = -1;
         
     int k = ceil(pow(n, 1.0 / 3.0));
     
     int sum = 0;
     
-    int m = 1;
-    
-    for (int i = 0; i < 8; i++, m++)
+    for (int i = 0; i < 8; i++)
     {
         for (int p = k; p > 0; p--)
+        {
+            int t = p;
+            
+            int m = pow (t, 3);
+            
+            sum += m;
+            
+            if (sum == n)
             {
-                int t = p;
+                temp[i] == m;
                 
-                int temptemp = pow (t, 3);
-                
-                sum += temptemp;
-                
-                temp[i] == temptemp;
-                
-                if (sum == n)
-                {
-                    for (int j = 0; j < m; j++)
-                        cubs[j] = temp[j];
-                    
-                    return temp;
-                }
-                else if (sum > n)
-                {
-                    sum -= temptemp;
-                }
-                else 
-                    break;
+                return temp;
             }
+            else if (sum > n)
+                sum -= m;
+            else 
+            {
+                temp[i] == m;
+                
+                break;
+            }
+        }
+        
     }
-    temp[0] = -1;
+    
+    for (int i = 0; i < 8; i++)
+        temp[i] = -1;   
         
     return temp;
 }
@@ -53,15 +56,18 @@ int main()
     int* cubs = new int[8];
     
     for (int i = 0; i < 8; i++)
-        cubs[i] = 0;
+        cubs[i] = -1;
         
     cubs = func(cubs, n);
     
     for (int i = 0; i < 8; i++)
     {
-        if (cubs[i] == 0 && i == -1)
+        if (cubs[i] == -1 && i == 0)
+        {
             cout << "Impossible";
-        else if (cubs[i] != 0)
+            break;
+        }
+        else if (cubs[i] > 0)
             cout << cubs[i] << " ";
         else
             break;
