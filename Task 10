@@ -1,1 +1,73 @@
+#include <iostream>
+#include <cmath>
 
+using namespace std;
+
+int* func(int* cubs, int n)
+{
+    int* temp = new int[8];
+    
+    int k = ceil(pow(n, 1.0 / 3.0));
+    
+    int t = 0;
+    int sum = 0;
+    
+    int m = 1;
+    
+    for (int i = 0; i < 8; i++, m++)
+    {
+        for (int p = k; p > 0; p++)
+            {
+                t = p;
+                
+                int temptemp = pow (t, 3);
+                
+                sum += temptemp;
+                
+                temp[i] == temptemp;
+                
+                if (sum == n)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        cubs[j] = temp[j];
+                    }
+                    
+                    return temp;
+                }
+                else if (sum > n)
+                {
+                    sum -= temptemp;
+                }
+            }
+    }
+    
+    return temp;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    
+    int* cubs = new int[8];
+    
+    for (int i = 0; i < 8; i++)
+        cubs[i] = 0;
+        
+    cubs = func(cubs, n);
+    
+    for (int i = 0; i < 8; i++)
+    {
+        if (cubs[i] != 0 && i == 0)
+            cout << "Impossible";
+        else if (cubs[i] != 0)
+            cout << cubs[i] << " ";
+        else
+            break;
+    }
+        
+    delete [] cubs;
+    
+    return 0;
+}
