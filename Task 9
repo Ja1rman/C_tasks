@@ -7,11 +7,9 @@ int* cut(int* Arr, int l1, int l2)
 	int k = l1;
 	int* arr = new int[l2 - l1];
 	
-	while (k < l2) 
-	{
+	for (; k < l2; k++) 
 		arr[k - l1] = Arr[k];
-		k++;
-	}
+		
 	return arr;
 }
 
