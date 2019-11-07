@@ -7,6 +7,9 @@ int* func(int* cubs, int n)
 {
     int* temp = new int[8];
     
+    for (int i = 0; i < 8; i++)
+        temp[i] = 0;
+        
     int k = ceil(pow(n, 1.0 / 3.0));
     
     int t = 0;
@@ -52,9 +55,6 @@ int main()
     
     int* cubs = new int[8];
     
-    for (int i = 0; i < 8; i++)
-        cubs[i] = 0;
-        
     cubs = func(cubs, n);
     
     for (int i = 0; i < 8; i++)
