@@ -8,7 +8,7 @@ int* func(int* cubs, int n)
     int* temp = new int[8];
     
     for (int i = 0; i < 8; i++)
-        temp[i] = -1;
+        temp[i] = -1; 
         
     int k = ceil(pow(n, 1.0 / 3.0));
     
@@ -16,7 +16,7 @@ int* func(int* cubs, int n)
     
     for (int i = 0; i < 8; i++)
     {
-        for (int p = k; p > 0; p--)
+        for (int p = k; p >= 1; p--)
         {
             int t = p;
             
@@ -41,7 +41,6 @@ int* func(int* cubs, int n)
         }
         
     }
-    
     for (int i = 0; i < 8; i++)
         temp[i] = -1;   
         
@@ -54,10 +53,7 @@ int main()
     cin >> n;
     
     int* cubs = new int[8];
-    
-    for (int i = 0; i < 8; i++)
-        cubs[i] = -1;
-        
+
     cubs = func(cubs, n);
     
     for (int i = 0; i < 8; i++)
@@ -77,4 +73,3 @@ int main()
     
     return 0;
 }
- 
