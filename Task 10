@@ -10,7 +10,7 @@ int* func(int* cubs, int n)
     for (int i = 0; i < 8; i++)
         temp[i] = -1;
        
-    int k = ceil(pow(n, 1.0 / 3.0));
+    int k = floor(pow(n, 1.0 / 3.0));
    
     int sum = 0;
    
@@ -26,7 +26,7 @@ int* func(int* cubs, int n)
            
             if (sum == n)
             {
-                temp[i] == t;
+                temp[i] = t;
                
                 return temp;
             }
@@ -34,7 +34,7 @@ int* func(int* cubs, int n)
                 sum -= m;
             else
             {
-                temp[i] == t;
+                temp[i] = t;
                
                 break;
             }
