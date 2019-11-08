@@ -2,9 +2,13 @@
 
 using namespace std;
 
-int delete_duplicates(int* Array, int n)
+int* delete_duplicates(int* Array, int n)
 {
-    for (int i = 0; i < n; i++)
+    int* arr = new int[n + 1];
+    
+    int k = 1;
+    
+    for (int i = 1; i <= n; i++)
     {
         int p = 0;
         
@@ -13,8 +17,14 @@ int delete_duplicates(int* Array, int n)
                 p++;
             
         if (p == 0)
-            cout << Array[i] << " ";
+        {
+            arr[k] = Array[i];
+            k++;
+        }
     }
+    arr[0] = k - 1;
+    
+    return arr;
 }
 
 int main()
@@ -23,13 +33,17 @@ int main()
     
     cin >> n;
     
-    int* Array = new int[n];
+    int* Array = new int[n + 1];
     
-    for (int i = 0; i < n; i++)
+    Array[0] = n;
+    
+    for (int i = 1; i <= n; i++)
         cin >> Array[i];
    
-    delete_duplicates(Array, n);
+    Array = delete_duplicates(Array, n);
     
+    for (int i = 1; i <= Array[0]; i++)
+        cout << Array[i] << " ";
     delete [] Array;
     
     return 0;
