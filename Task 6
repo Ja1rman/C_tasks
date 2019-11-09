@@ -16,7 +16,7 @@ void put_snake(int** Snake, int n, int m)
     int nm = n * m;
     int num = nm;
     
-    while (k < nm) 
+    while (k <= nm) 
     {   
         for (; y >= min_y && k <= nm; y--, k++)
             Snake[x][y] = num--;
